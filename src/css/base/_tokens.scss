@@ -1,0 +1,19 @@
+:root {
+  --font-size-base: 16px;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+
+  --color-dark: #1F2D30;
+  --color-light: #FBFBFB;
+
+  --color-brand-primary: #18ACC4;
+  --color-brand-primary-dark: #007A8D;
+  --color-brand-secondary: #FDCB13;
+  --color-brand-secondary-dark: #DE9E1F;
+
+  --color-text: var(--color-dark);
+  --color-text-highlight: #0FA866;
+  
+  --color-background: var(--color-light);
+}
