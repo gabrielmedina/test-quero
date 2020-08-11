@@ -1,0 +1,27 @@
+# To do
+
+☐ Create static header
+☐ Create static navbar
+☐ Create static breadcrumb
+☐ Create static footer
+
+☐ Create favorites bags page
+☐ Create favorites bags list component
+☐ Create favorites bags list item component
+☐ Create favorites bags filter component (by semesters)
+
+☐ Create dialog component
+☐ Create bags filter component
+☐ Create bags list component
+☐ Create bags list item component
+
+☐ Create function to add new favorite(s) bag(s) to favorites bags list
+☐ Create function to remove a bag of favorites bags list
+
+# Documentation
+
+☐ Update a README.md with instructions of project
+
+# Host
+
+☐ Deploy application to Netlify
