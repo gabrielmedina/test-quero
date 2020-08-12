@@ -1,28 +1,23 @@
-$breakpoint-sm: 576px;
-$breakpoint-md: 768px;
-$breakpoint-lg: 992px;
-$breakpoint-xl: 1200px;
-
-.zl-container {
+.container {
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 var(--spacing-md);
   max-width: var(--container-width-sm);
 }
 
 @media screen and (min-width: $breakpoint-sm) {
-  .zl-container {
+  .container {
     max-width: var(--container-width-md);
   }
 }
 
 @media screen and (min-width: $breakpoint-md) {
-  .zl-container {
+  .container {
     max-width: var(--container-width-lg);
   }
 }
 
 @media screen and (min-width: $breakpoint-lg) {
-  .zl-container {
+  .container {
     max-width: var(--container-width-xl);
   }
 }

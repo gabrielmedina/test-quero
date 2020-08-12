@@ -1,0 +1,37 @@
+.u-show_xs,
+.u-show_sm,
+.u-show_md,
+.u-show_lg,
+.u-show_xl {
+  display: none !important;
+}
+
+@media screen and (max-width: $breakpoint-sm) {
+  .u-show_xs {
+    display: inherit !important;
+  }
+}
+
+@media screen and (min-width: $breakpoint-sm) and (max-width: ($breakpoint-md - 1px)) {
+  .u-show_sm {
+    display: inherit !important;
+  }
+}
+
+@media screen and (min-width: $breakpoint-md) and (max-width: ($breakpoint-lg - 1px)) {
+  .u-show_md {
+    display: inherit !important;
+  }
+}
+
+@media screen and (min-width: $breakpoint-lg) and (max-width: ($breakpoint-xl - 1px)) {
+  .u-show_lg {
+    display: inherit !important;
+  }
+}
+
+@media screen and (min-width: $breakpoint-xl) {
+  .u-show_xl {
+    display: inherit !important;
+  }
+}

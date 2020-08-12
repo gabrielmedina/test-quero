@@ -1,24 +1,59 @@
 :root {
-  --font-size-base: 16px;
-  --font-weight-light: 300;
-  --font-weight-normal: 400;
+  --font-family: 'Red Hat Text', sans-serif;
+  --font-size-base: 1rem;
+  --font-weight-light: 400;
+  --font-weight-regular: 500;
   --font-weight-bold: 700;
 
-  --color-dark: #1F2D30;
-  --color-light: #FBFBFB;
+  --color-neutral-0: #ffffff;
+  --color-neutral-5: #FBFBFB;
+  --color-neutral-10: #eeeeee;
+  --color-neutral-20: #cccccc;
+  --color-neutral-30: #b3b3b3;
+  --color-neutral-40: #999999;
+  --color-neutral-50: #808080;
+  --color-neutral-60: #666666;
+  --color-neutral-70: #4d4d4d;
+  --color-neutral-80: #333333;
+  --color-neutral-90: #1F2D30;
+  --color-neutral-100: #000000;
+
+  --color-dark: var(--color-neutral-100);
+  --color-dark-accessible: var(--color-neutral-90);
+
+  --color-light: var(--color-neutral-0);
+  --color-light-accessible: var(--color-neutral-5);
 
   --color-brand-primary: #18ACC4;
   --color-brand-primary-dark: #007A8D;
   --color-brand-secondary: #FDCB13;
   --color-brand-secondary-dark: #DE9E1F;
 
-  --color-text: var(--color-dark);
+  --color-text: var(--color-dark-accessible);
   --color-text-highlight: #0FA866;
-  
-  --color-background: var(--color-light);
 
-  --container-width-sm: 540px;
-  --container-width-md: 720px;
-  --container-width-lg: 960px;
-  --container-width-xl: 1140px;
+  --color-background: var(--color-light-accessible);
+
+  --color-border-light: var(--color-neutral-10);
+  --color-border-dark: var(--color-neutral-90);
+
+  --spacing-none: 0;
+  --spacing-xxs: 0.125rem; // 2px
+  --spacing-xs: 0.25rem; // 4px
+  --spacing-sm: 0.5rem; // 8px
+  --spacing-md: 1rem; // 16px
+  --spacing-lg: 1.5rem; // 24px
+  --spacing-xl: 2rem; // 32px
+  --spacing-xxl: 3rem; //48px
+  --spacing-xxxl: 4rem; // 64px
+
+  --container-width-sm: 34rem; // 544px
+  --container-width-md: 45rem; // 720px
+  --container-width-lg: 60rem; // 960px
+  --container-width-xl: 75rem; // 1200px
 }
+
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
