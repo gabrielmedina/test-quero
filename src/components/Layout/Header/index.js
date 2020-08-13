@@ -6,7 +6,7 @@ const Header = () => {
       <div className="container">
         <div className="header__content">
           <div className="header__item">
-            <a className="header__link header__link_help" href="#">
+            <a className="header__link header__link_help" href="/">
               <i className="header__link-icon fal fa-info-circle"></i>
               <span className="header__link-title u-show_lg u-show_xl">
                 Como funciona
@@ -19,7 +19,7 @@ const Header = () => {
             <a
               className="header__link header__link_whatsapp u-show_xl"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               href="https://web.whatsapp.com/send?l=pt&phone=5508001232222"
             >
               <i className="header__link-icon fab fa-whatsapp"></i>
@@ -43,7 +43,7 @@ const Header = () => {
           </h1>
 
           <div className="header__item">
-            <a className="header__link header__link_account" href="#">
+            <a className="header__link header__link_account" href="/">
               <i className="header__link-icon fal fa-user-circle"></i>
               <span className="header__link-title u-show_lg u-show_xl">
                 Gabriel Medina

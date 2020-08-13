@@ -14,11 +14,7 @@ const Breadcrumb = ({ links }) => {
         </a>
       </li>
       <li className="breadcrumb__item">
-        <a
-          className="breadcrumb__link breadcrumb__link_current"
-          aria-current="page"
-          href="#"
-        >
+        <a className="breadcrumb__link breadcrumb__link_current" aria-current="page" href="/">
           Bolsas favoritas
         </a>
       </li>
