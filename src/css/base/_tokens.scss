@@ -36,6 +36,8 @@
   --color-border-light: var(--color-neutral-10);
   --color-border-dark: var(--color-neutral-90);
 
+  --box-shadow: 0 3px 4px #1F2D3020;
+
   --spacing-none: 0;
   --spacing-xxs: 0.125rem; // 2px
   --spacing-xs: 0.25rem; // 4px
@@ -46,10 +48,14 @@
   --spacing-xxl: 3rem; //48px
   --spacing-xxxl: 4rem; // 64px
 
+  --border-radius: 4px;
+
   --container-width-sm: 34rem; // 544px
   --container-width-md: 45rem; // 720px
   --container-width-lg: 60rem; // 960px
   --container-width-xl: 75rem; // 1200px
+  
+  --card-background: var(--color-light);
 }
 
 $breakpoint-sm: 576px;

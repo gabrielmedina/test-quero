@@ -1,0 +1,161 @@
+.favorites-bags__card {
+  display: flex;
+  
+  + .favorites-bags__card {
+    margin-top: var(--spacing-lg);
+  }
+}
+
+.favorites-bags__item {
+  width: 100%;
+}
+
+.favorites-bags__divisor {
+  margin: var(--spacing-md) 0;
+  border: solid 1px var(--color-border-light);
+}
+
+.favorites-bags__btn {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-lg);
+
+  color: var(--color-dark-accessible);
+  text-decoration: none;
+  text-align: center;
+}
+
+.favorites-bags__btn-icon {
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-brand-primary);
+  font-size: 4.5em;
+}
+
+.favorites-bags__btn-title {
+  margin: 0 0 var(--spacing-xs);
+  font-size: 1.3em;
+  letter-spacing: -0.02em;
+}
+
+.favorites-bags__btn-text {
+  margin: 0;
+  font-size: .9em;
+}
+
+.favorites-bags__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.favorites-bags__university-logo {
+  margin: 0 0 var(--spacing-xl);
+  display: block;
+  height: 3rem;
+}
+
+.favorites-bags__university-name {
+  margin: 0 0 var(--spacing-xs);
+  color: var(--color-text);
+  font-size: .85em;
+  text-transform: uppercase;
+}
+
+.favorites-bags__university-course {
+  margin: 0 0 var(--spacing-md);
+  color: var(--color-brand-primary-dark);
+  font-weight: var(--font-weight-bold);
+}
+
+.favorites-bags__university-score {
+  margin: 0;
+  color: var(--color-text);
+  font-weight: var(--font-weight-bold);
+}
+
+.favorites-bags__university-kind {
+  margin: 0 0 var(--spacing-sm);
+  color: var(--color-text);
+  font-size: .85em;
+  font-weight: var(--font-weight-bold);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.favorites-bags__university-start-date {
+  margin: 0;
+  color: var(--color-text);
+  font-size: .85em;
+  text-align: center;
+}
+
+.favorites-bags__university-price-label {
+  margin: 0 0 var(--spacing-md);
+  color: var(--color-text);
+  font-size: .85em;
+  font-weight: var(--font-weight-bold);
+  text-align: center;
+}
+
+.favorites-bags__university-full-price {
+  margin: 0;
+  color: var(--color-text);
+  font-size: .85em;
+  text-decoration: line-through;
+  text-align: center;
+}
+
+.favorites-bags__university-price-with-discount {
+  margin: 0;
+  color: var(--color-text-highlight);
+  font-size: 1.3em;
+  font-weight: var(--font-weight-bold);
+  text-align: center;
+}
+
+.favorites-bags__university-price_time {
+  margin-left: var(--spacing-xs);
+  color: var(--color-text);
+  font-size: .8rem;
+  font-weight: var(--font-weight-light);
+  text-align: center;
+}
+
+.favorites-bags__footer {
+  margin-top: var(--spacing-lg);
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (min-width: $breakpoint-md) {
+  .favorites-bags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .favorites-bags__card {
+    width: calc(50% - var(--spacing-lg));
+    margin: 0 var(--spacing-lg) var(--spacing-lg) 0;
+
+    + .favorites-bags__card {
+      margin-top: 0;
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-lg) {
+  .favorites-bags__card {
+    width: calc(33.33% - var(--spacing-lg));
+  }
+}
+
+
+@media screen and (min-width: $breakpoint-xl) {
+  .favorites-bags__card {
+    width: calc(25% - var(--spacing-lg));
+  }
+}

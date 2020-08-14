@@ -9,7 +9,7 @@ class Navbar extends React.Component {
     };
   }
 
-  toggleNavbarList = (prevState) => {
+  toggleNavbarList = () => {
     this.setState({
       displayNavbarList: !this.state.displayNavbarList,
     });

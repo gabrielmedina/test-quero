@@ -1,0 +1,22 @@
+.page {
+  margin: var(--spacing-xl) 0;
+}
+
+.page__header {
+  margin-bottom: var(--spacing-xl);
+}
+
+.page__title {
+  margin: 0 0 var(--spacing-sm);
+  color: var(--color-dark-accessible);
+  font-size: 2.2em;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.02em;
+}
+
+.page__text {
+  margin: 0;
+  font-size: 1.125em;
+  font-weight: var(--font-weight-light);
+  line-height: 1.5;
+}
