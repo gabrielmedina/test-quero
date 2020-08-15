@@ -1,0 +1,127 @@
+.bags-filter-results {
+
+}
+
+.bags-filter-results__header {
+  margin-bottom: var(--spacing-lg);
+}
+
+.bags-filter-results__title {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 1em;
+  font-weight: var(--font-weight-bold);
+}
+
+.bags-filter-results__list {
+  margin: 0 0 var(--spacing-xl);
+  padding: 0;
+  list-style: none;
+  padding: var(--spacing-lg) 0;
+  border-top: solid 2px var(--color-border-light);
+  border-bottom: solid 2px var(--color-border-light);
+}
+
+.bags-filter-results__item {
+  + .bags-filter-results__item {
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-lg);
+    border-top: solid 2px var(--color-border-light);
+  }
+}
+
+.bags-filter-results__label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.bags-filter-results__university-logo {
+  width: 8rem;
+  padding: 0 var(--spacing-lg);
+}
+
+.bags-filter-results__content {
+  flex-grow: 1;
+}
+
+.bags-filter-results__header {
+  margin: 0 0 var(--spacing-md);
+}
+
+.bags-filter-results__university-course {
+  margin: 0 0 var(--spacing-xs);
+  color: var(--color-brand-primary-dark);
+  font-size: 1em;
+  font-weight: var(--font-weight-bold);
+}
+
+.bags-filter-results__university-course-level {
+  margin: 0;
+  color: var(--color-text);
+  font-size: .8em;
+  font-weight: var(--font-weight-regular);
+}
+
+.bags-filter-results__university-price {
+  margin: 0;
+  font-size: 1em;
+  color: var(--color-text);
+  font-weight: var(--font-weight-regular);
+}
+
+.bags-filter-results__university-discount-percentage {
+  margin: 0 0 var(--spacing-xs);
+}
+
+.bags-filter-results__university-discount-percentage-value {
+  color: var(--color-text-highlight);
+  font-weight: var(--font-weight-bold);
+}
+
+.bags-filter-results__university-price-with-discount {
+  margin: 0;
+  color: var(--color-text-highlight);
+  font-weight: var(--font-weight-bold);
+}
+
+.bags-filter-results__footer {
+  display: flex;
+  flex-direction: column;
+
+  .btn + .btn {
+    margin-top: var(--spacing-md);
+  }
+}
+
+@media screen and (min-width: 375px) {
+  .bags-filter-results__footer {
+    flex-direction: row;
+    justify-content: flex-end;
+
+    .btn + .btn {
+      margin: 0 0 0 var(--spacing-md);
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-md) {
+  .bags-filter-results__content {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .bags-filter-results__header {
+    margin-bottom: 0;
+  }
+
+  .bags-filter-results__university-logo {
+    width: 10rem;
+  }
+
+  .bags-filter-results__university-price {
+    text-align: right;
+  }
+}

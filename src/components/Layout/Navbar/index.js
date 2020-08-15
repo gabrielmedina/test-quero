@@ -9,7 +9,7 @@ class Navbar extends React.Component {
     };
   }
 
-  toggleNavbarList = () => {
+  toggleDisplayNavbarList = () => {
     this.setState({
       displayNavbarList: !this.state.displayNavbarList,
     });
@@ -31,7 +31,7 @@ class Navbar extends React.Component {
               aria-expanded={displayNavbarList}
               aria-haspopup={displayNavbarList}
               aria-controls="navbar-main"
-              onClick={this.toggleNavbarList}
+              onClick={this.toggleDisplayNavbarList}
             >
               Menu
               <i

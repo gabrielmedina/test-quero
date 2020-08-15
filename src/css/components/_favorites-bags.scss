@@ -21,11 +21,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: none;
+  border: 0;
   padding: var(--spacing-lg);
 
   color: var(--color-dark-accessible);
+  font-size: 1em;
   text-decoration: none;
   text-align: center;
+
+  cursor: pointer;
 }
 
 .favorites-bags__btn-icon {

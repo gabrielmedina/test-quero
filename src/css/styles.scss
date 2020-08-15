@@ -6,9 +6,14 @@
 @import './components/btn';
 @import './components/card';
 @import './components/container';
-@import './components/favorites-bags';
+@import './components/dialog';
 @import './components/footer';
+@import './components/form';
 @import './components/header';
 @import './components/list';
 @import './components/navbar';
 @import './components/page';
+
+@import './components/bags-filter-form';
+@import './components/bags-filter-results';
+@import './components/favorites-bags';

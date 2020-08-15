@@ -19,3 +19,8 @@
   background: none;
   border-color: var(--color-brand-primary);
 }
+
+.btn_large {
+  font-size: 1em;
+  padding: calc(var(--spacing-md) - 4px) calc(var(--spacing-lg) - 4px);
+}

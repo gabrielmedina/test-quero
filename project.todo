@@ -6,14 +6,14 @@
 ✔ Create static footer @started(20-08-12 22:14) @done(20-08-12 23:08) @lasted(54m25s)
 
 ✔ Create favorites bags page @started(20-08-13 19:08) @done(20-08-13 22:38) @lasted(3h30m22s)
-☐ Create favorites bags list component
-☐ Create favorites bags list item component
+✔ Create favorites bags list component @started(20-08-15 13:12) @done(20-08-15 14:54) @lasted(1h42m43s)
+✔ Create favorites bags list item component @started(20-08-15 13:12) @done(20-08-15 14:54) @lasted(1h42m43s)
 ☐ Create favorites bags filter component (by semesters)
 
-☐ Create dialog component
-☐ Create bags filter component
-☐ Create bags list component
-☐ Create bags list item component
+✔ Create dialog component @started(20-08-14 16:25) @done(20-08-15 14:53) @lasted(22h28m52s)
+✔ Create bags filter component @started(20-08-15 13:12) @done(20-08-15 14:53) @lasted(1h41m49s)
+✔ Create bags list component @started(20-08-15 13:12) @done(20-08-15 14:54) @lasted(1h42m10s)
+✔ Create bags list item component @started(20-08-15 13:12) @done(20-08-15 14:54) @lasted(1h42m11s)
 
 ☐ Create function to add new favorite(s) bag(s) to favorites bags list
 ☐ Create function to remove a bag of favorites bags list

@@ -32,11 +32,13 @@
   --color-text-highlight: #0FA866;
 
   --color-background: var(--color-light-accessible);
+  --color-background-overlay: #1F2D30FA;
 
   --color-border-light: var(--color-neutral-10);
+  --color-border-light-accessible: var(--color-neutral-20);
   --color-border-dark: var(--color-neutral-90);
 
-  --box-shadow: 0 3px 4px #1F2D3020;
+  --box-shadow: 0 3px 4px #1F2D303D;
 
   --spacing-none: 0;
   --spacing-xxs: 0.125rem; // 2px
