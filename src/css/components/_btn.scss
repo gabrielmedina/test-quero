@@ -18,9 +18,39 @@
   color: var(--color-brand-primary);
   background: none;
   border-color: var(--color-brand-primary);
+
+  &.btn_current {
+    color: var(--color-light);
+    border-color: var(--color-brand-primary-dark);
+    background-color: var(--color-brand-primary-dark);
+  }
 }
 
 .btn_large {
   font-size: 1em;
   padding: calc(var(--spacing-md) - 4px) calc(var(--spacing-lg) - 4px);
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: column;
+
+  .btn {
+    border-radius: 0;
+    margin-bottom: -1px;
+
+    &:first-of-type {
+      border-radius: var(--border-radius) var(--border-radius) 0 0;
+    }
+
+    &:last-of-type {
+      border-radius: 0 0 var(--border-radius) var(--border-radius);
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-md) {
+  .btn_small {
+    padding: var(--spacing-xs) var(--spacing-md);
+  }
 }

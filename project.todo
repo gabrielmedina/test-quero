@@ -17,6 +17,7 @@
 
 ✔ Create API to get db.json data @started(20-08-15 15:00) @done(20-08-15 15:14) @lasted(14m39s)
 
+✔ Sort bags by university name @started(20-08-15 15:56) @done(20-08-15 16:06) @lasted(10m46s)
 ☐ Create function to add new favorite(s) bag(s) to favorites bags list
 ☐ Create function to remove a bag of favorites bags list
 

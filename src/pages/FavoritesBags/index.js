@@ -22,9 +22,10 @@ class FavoritesBags extends React.Component {
     axios.get('http://localhost:3001/bags')
       .then(res => {
         const bags = res.data;
+        bags.sort(this.sortBagsByUniversityName)
         this.setState({ bags });
       })
-  }
+  };
 
   openAddFavoriteBagDialog = () => {
     this.setState({
@@ -37,6 +38,13 @@ class FavoritesBags extends React.Component {
       displayAddFavoriteBagDialog: false,
     });
   };
+
+  sortBagsByUniversityName = (bag_one, bag_two) => {
+    bag_one = bag_one.university.name.toUpperCase();
+    bag_two = bag_two.university.name.toUpperCase();
+
+    return bag_one > bag_two ? 1 : -1
+  }
 
   render() {
     const { bags, displayAddFavoriteBagDialog } = this.state;
@@ -53,6 +61,12 @@ class FavoritesBags extends React.Component {
               atualizações com as melhores ofertas disponíveis.
             </p>
           </header>
+
+          <div className="semester-filter">
+            <button className="btn btn_semester-filter">Todos os semestres</button>
+            <button className="btn btn_semester-filter">2º semestre de 2019</button>
+            <button className="btn btn_semester-filter">1º semestre de 2019</button>
+          </div>
 
           <ol className="favorites-bags list">
             <li className="favorites-bags__card card">
