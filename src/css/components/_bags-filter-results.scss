@@ -1,7 +1,3 @@
-.bags-filter-results {
-
-}
-
 .bags-filter-results__header {
   margin-bottom: var(--spacing-lg);
 }
@@ -45,10 +41,6 @@
 
 .bags-filter-results__content {
   flex-grow: 1;
-}
-
-.bags-filter-results__header {
-  margin: 0 0 var(--spacing-md);
 }
 
 .bags-filter-results__university-course {
@@ -114,7 +106,7 @@
   }
 
   .bags-filter-results__header {
-    margin-bottom: 0;
+    margin-bottom: var(--spacing-md);
   }
 
   .bags-filter-results__university-logo {

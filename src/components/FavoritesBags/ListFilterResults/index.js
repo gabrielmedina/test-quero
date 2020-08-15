@@ -50,11 +50,6 @@ const ListFilterResults = ({ bags }) => {
           );
         })}
       </ol>
-
-      <footer className="bags-filter-results__footer">
-        <button className="btn btn_secondary btn_large">Cancelar</button>
-        <button className="btn btn_primary btn_large">Adicionar bolsa(s)</button>
-      </footer>
     </section>
   );
 };
