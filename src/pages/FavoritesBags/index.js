@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 
 import { formatMoney } from "../../helpers/FormatNumber";
 
@@ -13,57 +14,16 @@ class FavoritesBags extends React.Component {
 
     this.state = {
       displayAddFavoriteBagDialog: false,
-      bags: [
-        {
-          "id": "1",
-          "full_price": 2139.64,
-          "price_with_discount": 706.08,
-          "discount_percentage": 67.0,
-          "start_date": "01/08/2019",
-          "enrollment_semester": "2019.2",
-          "enabled": true,
-          "course": {
-            "name": "Engenharia Mecânica",
-            "kind": "Presencial",
-            "level": "Bacharelado",
-            "shift": "Noite"
-          },
-          "university": {
-            "name": "UNIP",
-            "score": 4.5,
-            "logo_url": "https://www.tryimg.com/u/2019/04/16/unip.png"
-          },
-          "campus": {
-            "name": "Jardim das Indústrias",
-            "city": "São José dos Campos"
-          }
-        },
-        {
-          "id": "2",
-          "full_price": 1227.05,
-          "price_with_discount": 515.36,
-          "discount_percentage": 58.0,
-          "start_date": "01/08/2019",
-          "enrollment_semester": "2019.2",
-          "enabled": true,
-          "course": {
-            "name": "Jornalismo",
-            "kind": "Presencial",
-            "level": "Bacharelado",
-            "shift": "Noite"
-          },
-          "university": {
-            "name": "UNIP",
-            "score": 4.5,
-            "logo_url": "https://www.tryimg.com/u/2019/04/16/unip.png"
-          },
-          "campus": {
-            "name": "Água Branca",
-            "city": "São Paulo"
-          }
-        },
-      ],
+      bags: [],
     };
+  }
+
+  componentDidMount() {
+    axios.get('http://localhost:3001/bags')
+      .then(res => {
+        const bags = res.data;
+        this.setState({ bags });
+      })
   }
 
   openAddFavoriteBagDialog = () => {
