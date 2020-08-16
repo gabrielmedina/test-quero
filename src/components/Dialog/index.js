@@ -21,9 +21,10 @@ class Dialog extends React.Component {
 
     return (
       <section
-        className={`dialog ${opened ? "dialog_opened" : "dialog_closed"}`}
-        ref={this.refDialog}
         role="dialog"
+        ref={this.refDialog}
+        tabIndex="0"
+        className={`dialog ${opened ? "dialog_opened" : "dialog_closed"}`}
       >
         <div className="dialog__container">
           <button
@@ -43,6 +44,7 @@ class Dialog extends React.Component {
             {children}
           </div>
         </div>
+        <span tabIndex="0" onFocus={() => this.refDialog.current.focus()} />
       </section>
     );
   }
