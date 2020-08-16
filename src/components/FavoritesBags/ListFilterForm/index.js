@@ -6,7 +6,7 @@ import { formatMoney } from "../../../helpers/FormatNumber";
 import INICITAL_CITIES from "../../../constants/Cities";
 import INICITAL_COURSES from "../../../constants/Courses";
 
-const INITIAL_VALUUES = {
+const INITIAL_VALUES = {
   campus: {
     city: "São José dos Campos",
   },
@@ -40,7 +40,7 @@ class ListFilterForm extends React.Component {
 
     return (
       <Formik
-        initialValues={INITIAL_VALUUES}
+        initialValues={INITIAL_VALUES}
         validate={(values) => this.handleSubmit(values)}
       >
         <Form className="bags-filter-form form">
