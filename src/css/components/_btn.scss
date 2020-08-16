@@ -12,6 +12,13 @@
   font-weight: var(--font-weight-bold);
 
   cursor: pointer;
+
+  &:disabled {
+    color: var(--button-text-disabled);
+    border-color: var(--button-border-disabled);
+    background: var(--button-background-disabled);
+    cursor: default;
+  }
 }
 
 .btn_secondary {

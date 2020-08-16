@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { findIndex, orderBy } from "lodash";
 
 import { formatMoney } from "../../helpers/FormatNumber";
 
@@ -14,17 +15,17 @@ class FavoritesBags extends React.Component {
 
     this.state = {
       displayAddFavoriteBagDialog: false,
-      bags: [],
+      favoritesBags: [],
+      storeBags: [],
     };
   }
 
   componentDidMount() {
-    axios.get('http://localhost:3001/bags')
-      .then(res => {
-        const bags = res.data;
-        bags.sort(this.sortBagsByUniversityName)
-        this.setState({ bags });
-      })
+    axios.get("http://localhost:3001/bags").then((res) => {
+      let storeBags = res.data;
+      storeBags = orderBy(storeBags, ['university.name'], ['asc']);
+      this.setState({ storeBags });
+    });
   };
 
   openAddFavoriteBagDialog = () => {
@@ -39,15 +40,29 @@ class FavoritesBags extends React.Component {
     });
   };
 
-  sortBagsByUniversityName = (bag_one, bag_two) => {
-    bag_one = bag_one.university.name.toUpperCase();
-    bag_two = bag_two.university.name.toUpperCase();
+  removeFavoriteBag = (bag) => {
+    let favoritesBags = this.state.favoritesBags;
 
-    return bag_one > bag_two ? 1 : -1
-  }
+    const indexBag = findIndex(favoritesBags, bag);
+    favoritesBags.splice(indexBag, 1);
+
+    this.updateFavoritesBags(favoritesBags);
+  };
+
+  filterFavoritesBags = (e) => {
+    return null;
+  };
+
+  updateFavoritesBags = (favoritesBags) => {
+    this.setState({ favoritesBags });
+  };
 
   render() {
-    const { bags, displayAddFavoriteBagDialog } = this.state;
+    const {
+      storeBags,
+      favoritesBags,
+      displayAddFavoriteBagDialog,
+    } = this.state;
 
     return (
       <div className="container">
@@ -62,12 +77,6 @@ class FavoritesBags extends React.Component {
             </p>
           </header>
 
-          <div className="semester-filter">
-            <button className="btn btn_semester-filter">Todos os semestres</button>
-            <button className="btn btn_semester-filter">2º semestre de 2019</button>
-            <button className="btn btn_semester-filter">1º semestre de 2019</button>
-          </div>
-
           <ol className="favorites-bags list">
             <li className="favorites-bags__card card">
               <button
@@ -81,7 +90,7 @@ class FavoritesBags extends React.Component {
                 </p>
               </button>
             </li>
-            {bags.map((bag) => {
+            {favoritesBags.map((bag) => {
               return (
                 <li key={bag.id} className="favorites-bags__card card">
                   <section className="favorites-bags__item">
@@ -94,7 +103,10 @@ class FavoritesBags extends React.Component {
                       <h2 className="favorites-bags__university-name">
                         {bag.university.name}
                       </h2>
-                      <p className="favorites-bags__university-course">
+                      <p
+                        title={bag.course.name}
+                        className="favorites-bags__university-course"
+                      >
                         {bag.course.name}
                       </p>
                       <span className="favorites-bags__university-score">
@@ -131,7 +143,12 @@ class FavoritesBags extends React.Component {
                     </div>
 
                     <footer className="favorites-bags__footer">
-                      <button className="btn btn_secondary">Excluir</button>
+                      <button
+                        className="btn btn_secondary"
+                        onClick={() => this.removeFavoriteBag(bag)}
+                      >
+                        Excluir
+                      </button>
                       <button className="btn btn_primary">Ver oferta</button>
                     </footer>
                   </section>
@@ -146,13 +163,13 @@ class FavoritesBags extends React.Component {
             opened={displayAddFavoriteBagDialog}
             closeDialog={this.closeAddFavoriteBagDialog}
           >
-            <ListFilterForm/>
-            <ListFilterResults bags={bags}/>
+            <ListFilterForm filterBags={this.filterFavoritesBags} />
 
-            <footer className="bags-filter-results__footer">
-              <button className="btn btn_secondary btn_large">Cancelar</button>
-              <button className="btn btn_primary btn_large">Adicionar bolsa(s)</button>
-            </footer>
+            <ListFilterResults
+              bags={storeBags}
+              getFavoritesBags={this.updateFavoritesBags}
+              closeDialog={this.closeAddFavoriteBagDialog}
+            />
           </Dialog>
         </section>
       </div>

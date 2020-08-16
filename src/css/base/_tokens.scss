@@ -58,6 +58,10 @@
   --container-width-xl: 75rem; // 1200px
   
   --card-background: var(--color-light);
+  
+  --button-text-disabled: var(--color-neutral-60);
+  --button-border-disabled: var(--color-neutral-30);
+  --button-background-disabled: var(--color-neutral-20);
 }
 
 $breakpoint-sm: 576px;

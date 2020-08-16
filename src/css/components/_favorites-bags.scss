@@ -7,7 +7,10 @@
 }
 
 .favorites-bags__item {
+  display: flex;
+  flex-direction: column;
   width: 100%;
+  justify-content: space-between;
 }
 
 .favorites-bags__divisor {
@@ -57,7 +60,7 @@
 }
 
 .favorites-bags__university-logo {
-  margin: 0 0 var(--spacing-xl);
+  margin: 0 0 var(--spacing-lg);
   display: block;
   height: 3rem;
 }
@@ -70,10 +73,12 @@
 }
 
 .favorites-bags__university-course {
-  margin: 0 0 var(--spacing-md);
+  margin: 0 0 var(--spacing-sm);
   color: var(--color-brand-primary-dark);
   text-align: center;
   font-weight: var(--font-weight-bold);
+  height: 1.3em;
+  overflow: hidden;
 }
 
 .favorites-bags__university-score {
@@ -150,6 +155,10 @@
     + .favorites-bags__card {
       margin-top: 0;
     }
+  }
+
+  .favorites-bags__btn {
+    min-height: 25rem;
   }
 }
 
