@@ -64,7 +64,7 @@ class ListFilterResults extends React.Component {
                     <input
                       id={`bag-filter-result-${bag.id}`}
                       type="checkbox"
-                      className="bags-filter-results__checkbox"
+                      className="bags-filter-results__checkbox form__checkbox-input"
                       checked={this.isFavoriteBag(bag)}
                       onChange={() => this.updateSelectedBags(bag)}
                     />
