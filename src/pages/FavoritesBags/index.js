@@ -62,11 +62,31 @@ class FavoritesBags extends React.Component {
     let storeBags = this.state.storeBags;
     let filteredBags;
 
+    // filter bags by price
     filteredBags = filter(storeBags, (bag) => {
       return bag.price_with_discount < price
     });
 
-    filteredBags = filter(filteredBags, filters);
+    // filter bags course name
+    if(filters.course.name) {
+      filteredBags = filter(filteredBags, (bag) => {
+        return bag.course.name === filters.course.name
+      });
+    }
+
+    // filter bags course kind
+    if(filters.course.kind.length < 2) {
+      filteredBags = filter(filteredBags, (bag) => {
+        return bag.course.kind === filters.course.kind[0]
+      });
+    }
+
+    // filter bags campus city
+    if(filters.campus.city) {
+      filteredBags = filter(filteredBags, (bag) => {
+        return bag.campus.city === filters.campus.city
+      });
+    }
 
     this.setState({ filteredBags });
   };

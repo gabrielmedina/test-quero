@@ -1,154 +1,133 @@
 import React from "react";
 
+import { Formik, Field, Form } from "formik";
 import { formatMoney } from "../../../helpers/FormatNumber";
+
+import INICITAL_CITIES from "../../../constants/Cities";
+import INICITAL_COURSES from "../../../constants/Courses";
+
+const INITIAL_VALUUES = {
+  campus: {
+    city: "São José dos Campos",
+  },
+  course: {
+    name: "",
+    kind: ["Presencial", "A distância"],
+  },
+};
 
 class ListFilterForm extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      cities: ["", "São José dos Campos", "São Paulo"],
-      courses: ["", "Administração", "Arquitetura e Urbanismo"],
       price: 10000,
-      kindPresential: true,
-      kindDistance: true,
-      filter: {}
     };
   }
 
-  handleCampusCityChange = (e) => {
-    const price = this.state.price;
-    let filter = this.state.filter;
+  handleSubmit = (values) => {
+    const { price } = this.state;
 
-    filter = { ...filter, campus: { city: e.target.value } }
-
-    this.setState({ filter });
-    this.props.updateFilters(filter, price);
+    this.props.updateFilters(values, price);
   };
 
-  handleCourseNameChange = (e) => {
-    const price = this.state.price;
-    let filter = this.state.filter;
-
-    let course = { ...filter.course, name: e.target.value }
-    filter = { ...filter, course }
-
-    this.setState({ filter });
-    this.props.updateFilters(filter, price);
-  };
-
-  handleKindPresentialChange = (e) => {
-    this.setState((prevState) => ({ 
-      kindPresential: !prevState.kindPresential 
-    }));
-  };
-
-  handleKindDistanceChange = (e) => {
-    this.setState((prevState) => ({ 
-      kindDistance: !prevState.kindDistance 
-    }));
-  };
-
-  handleRangeChange = (e) => {
-    const filter = this.state.filter;
-    const price = e.target.value;
-
+  handleRangePrice = (price) => {
     this.setState({ price });
-    this.props.updateFilters(filter, price);
   };
 
   render() {
-    const { cities, courses, price, kindPresential, kindDistance } = this.state;
+    const { price } = this.state;
 
     return (
-      <form className="bags-filter-form form">
-        <div className="form__field">
-          <label className="form__label" htmlFor="city">
-            Selecione sua cidade
-          </label>
-          <select
-            onChange={this.handleCampusCityChange}
-            className="form__select"
-            name="campus.city"
-            id="city"
-          >
-            {cities.map((city) => {
-              return (
+      <Formik
+        initialValues={INITIAL_VALUUES}
+        onSubmit={(values) => this.handleSubmit(values)}
+      >
+        <Form className="bags-filter-form form">
+          <div className="form__field">
+            <label className="form__label" htmlFor="city">
+              Selecione sua cidade
+            </label>
+            <Field
+              id="city"
+              name="campus.city"
+              as="select"
+              className="form__select"
+            >
+              {INICITAL_CITIES.map((city) => (
                 <option key={city} value={city}>
                   {city}
                 </option>
-              );
-            })}
-          </select>
-        </div>
+              ))}
+            </Field>
+          </div>
 
-        <div className="form__field">
-          <label className="form__label" htmlFor="course">
-            Selecione o curso de sua preferência
-          </label>
-          <select
-            onChange={this.handleCourseNameChange}
-            className="form__select"
-            name="course.name"
-            id="course"
-          >
-            {courses.map((course) => {
-              return (
+          <div className="form__field">
+            <label className="form__label" htmlFor="course">
+              Selecione o curso de sua preferência
+            </label>
+            <Field
+              id="course"
+              name="course.name"
+              as="select"
+              className="form__select"
+            >
+              {INICITAL_COURSES.map((course) => (
                 <option key={course} value={course}>
                   {course}
                 </option>
-              );
-            })}
-          </select>
-        </div>
-
-        <div className="form__field">
-          <p className="form__label">
-            Como você quer estudar?
-          </p>
-          <div className="form__checkbox">
-            <label className="form__checkbox-label">
-              <input
-                type="checkbox"
-                name="course.kind"
-                checked={kindPresential}
-                onChange={this.handleKindPresentialChange}
-                value="Presencial"
-                className="form__checkbox-input"
-              /> Presencial
-            </label>
-            <label className="form__checkbox-label">
-              <input
-                type="checkbox"
-                name="course.kind"
-                checked={kindDistance}
-                onChange={this.handleKindDistanceChange}
-                value="A distância"
-                className="form__checkbox-input"
-              /> A distância
-            </label>
+              ))}
+            </Field>
           </div>
-        </div>
 
-        <div className="form__field">
-          <label className="form__label" htmlFor="price">
-            Até quanto pode pagar?
-          </label>
-          <div className="form__range">
+          <div className="form__field">
+            <fieldset className="form__fieldset">
+              <legend className="form__label">Como você quer estudar?</legend>
+
+              <div className="form__checkbox">
+                <label className="form__checkbox-label">
+                  <Field
+                    type="checkbox"
+                    name="course.kind"
+                    value="Presencial"
+                    className="form__checkbox-input"
+                  />
+                  Presencial
+                </label>
+
+                <label className="form__checkbox-label">
+                  <Field
+                    type="checkbox"
+                    name="course.kind"
+                    value="A distância"
+                    className="form__checkbox-input"
+                  />
+                  A distância
+                </label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div className="form__field">
+            <label className="form__label" htmlFor="price">
+              Até quanto pode pagar?
+            </label>
             <span className="form__range-value">{formatMoney(price)}</span>
             <input
-              onChange={this.handleRangeChange}
-              value={price}
+              className="form__range-input"
+              id="price"
+              name="price_width_discount"
+              type="range"
               min="0"
               max="10000"
-              id="price"
-              name="price_with_discount"
-              type="range"
-              className="form__range-input"
+              value={price}
+              onChange={(e) => this.handleRangePrice(e.target.value)}
             />
           </div>
-        </div>
-      </form>
+
+          <button type="submit">Filtrar</button>
+        </Form>
+      </Formik>
     );
   }
 }

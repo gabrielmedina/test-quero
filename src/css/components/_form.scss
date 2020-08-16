@@ -7,6 +7,12 @@
   }
 }
 
+.form__fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
 .form__label {
   margin-bottom: var(--spacing-sm);
   display: block;
@@ -36,6 +42,7 @@
 
 .form__select,
 .form__range-input {
+  width: 100%;
   cursor: pointer;
 }
 
@@ -90,7 +97,4 @@
 .form__range-value {
   margin-bottom: var(--spacing-sm);
   display: block;
-}
-
-.form__range-input {
 }
