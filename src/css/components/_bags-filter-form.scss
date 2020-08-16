@@ -2,6 +2,10 @@
   margin-bottom: var(--spacing-xl);
 }
 
+.bags-filter-form__btn {
+  display: none;
+}
+
 @media screen and (min-width: $breakpoint-md) {
   .bags-filter-form {
     display: flex;

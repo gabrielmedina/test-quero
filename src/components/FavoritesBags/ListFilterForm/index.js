@@ -12,13 +12,15 @@ const INITIAL_VALUES = {
   },
   course: {
     name: "",
-    kind: ["Presencial", "A distância"],
+    kind: ["Presencial", "EaD"],
   },
 };
 
 class ListFilterForm extends React.Component {
   constructor(props) {
     super(props);
+
+    this.refFormBtn = React.createRef();
 
     this.state = {
       price: 10000,
@@ -41,9 +43,9 @@ class ListFilterForm extends React.Component {
     return (
       <Formik
         initialValues={INITIAL_VALUES}
-        validate={(values) => this.handleSubmit(values)}
+        onSubmit={(values) => this.handleSubmit(values)}
       >
-        <Form className="bags-filter-form form">
+        <Form onChange={() => this.refFormBtn.current.click()} className="bags-filter-form form">
           <div className="form__field">
             <label className="form__label" htmlFor="city">
               Selecione sua cidade
@@ -99,7 +101,7 @@ class ListFilterForm extends React.Component {
                   <Field
                     type="checkbox"
                     name="course.kind"
-                    value="A distância"
+                    value="EaD"
                     className="form__checkbox-input"
                   />
                   A distância
@@ -114,9 +116,9 @@ class ListFilterForm extends React.Component {
             </label>
             <span className="form__range-value">{formatMoney(price)}</span>
             <input
+              name="price_width_discount"
               className="form__range-input"
               id="price"
-              name="price_width_discount"
               type="range"
               min="0"
               max="10000"
@@ -124,6 +126,8 @@ class ListFilterForm extends React.Component {
               onChange={(e) => this.handleRangePrice(e.target.value)}
             />
           </div>
+
+          <button className="bags-filter-form__btn" ref={this.refFormBtn} type="submit"></button>
         </Form>
       </Formik>
     );
