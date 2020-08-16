@@ -41,7 +41,7 @@ class ListFilterForm extends React.Component {
     return (
       <Formik
         initialValues={INITIAL_VALUUES}
-        onSubmit={(values) => this.handleSubmit(values)}
+        validate={(values) => this.handleSubmit(values)}
       >
         <Form className="bags-filter-form form">
           <div className="form__field">
@@ -124,8 +124,6 @@ class ListFilterForm extends React.Component {
               onChange={(e) => this.handleRangePrice(e.target.value)}
             />
           </div>
-
-          <button type="submit">Filtrar</button>
         </Form>
       </Formik>
     );
