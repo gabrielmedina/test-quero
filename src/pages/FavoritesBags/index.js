@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { findIndex, orderBy } from "lodash";
+import { findIndex, orderBy, filter } from "lodash";
 
 import { formatMoney } from "../../helpers/FormatNumber";
 
@@ -15,18 +15,23 @@ class FavoritesBags extends React.Component {
 
     this.state = {
       displayAddFavoriteBagDialog: false,
-      favoritesBags: [],
       storeBags: [],
+      filteredBags: [],
+      favoritesBags: [],
     };
   }
 
   componentDidMount() {
     axios.get("http://localhost:3001/bags").then((res) => {
-      let storeBags = res.data;
-      storeBags = orderBy(storeBags, ['university.name'], ['asc']);
-      this.setState({ storeBags });
+      let bags = res.data;
+      bags = orderBy(bags, ["university.name", "course.name"], ["asc", "asc"]);
+
+      this.setState({
+        storeBags: bags,
+        filteredBags: bags,
+      });
     });
-  };
+  }
 
   openAddFavoriteBagDialog = () => {
     this.setState({
@@ -49,17 +54,26 @@ class FavoritesBags extends React.Component {
     this.updateFavoritesBags(favoritesBags);
   };
 
-  filterFavoritesBags = (e) => {
-    return null;
-  };
-
   updateFavoritesBags = (favoritesBags) => {
     this.setState({ favoritesBags });
   };
 
+  updateFilteredBags = (filters, price) => {
+    let storeBags = this.state.storeBags;
+    let filteredBags;
+
+    filteredBags = filter(storeBags, (bag) => {
+      return bag.price_with_discount < price
+    });
+
+    filteredBags = filter(filteredBags, filters);
+
+    this.setState({ filteredBags });
+  };
+
   render() {
     const {
-      storeBags,
+      filteredBags,
       favoritesBags,
       displayAddFavoriteBagDialog,
     } = this.state;
@@ -163,10 +177,11 @@ class FavoritesBags extends React.Component {
             opened={displayAddFavoriteBagDialog}
             closeDialog={this.closeAddFavoriteBagDialog}
           >
-            <ListFilterForm filterBags={this.filterFavoritesBags} />
+            <ListFilterForm 
+              updateFilters={this.updateFilteredBags} />
 
             <ListFilterResults
-              bags={storeBags}
+              favoritesBags={filteredBags}
               getFavoritesBags={this.updateFavoritesBags}
               closeDialog={this.closeAddFavoriteBagDialog}
             />

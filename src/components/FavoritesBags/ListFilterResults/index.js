@@ -8,7 +8,7 @@ class ListFilterResults extends React.Component {
     super(props);
 
     this.state = {
-      selectedFavoritesBags: this.props.bags || [],
+      selectedFavoritesBags: [],
     };
   }
 
@@ -31,12 +31,20 @@ class ListFilterResults extends React.Component {
   };
 
   hasSelectedFavoritesBags = () => {
-    return this.state.selectedFavoritesBags.length !== 0;
+    return this.state.selectedFavoritesBags.length > 0;
   };
+
+  hasFavoritesBags = () => {
+    return this.props.favoritesBags.length > 0;
+  }
+
+  disableAddButton = () => {
+    return !(this.hasSelectedFavoritesBags() && this.hasFavoritesBags())
+  }
 
   render() {
     const { selectedFavoritesBags } = this.state;
-    const { bags, getFavoritesBags, closeDialog } = this.props;
+    const { favoritesBags, getFavoritesBags, closeDialog } = this.props;
 
     return (
       <section className="bags-filter-results">
@@ -44,55 +52,62 @@ class ListFilterResults extends React.Component {
           <h1 className="bags-filter-results__title">Resultado:</h1>
         </header>
 
-        <ol className="bags-filter-results__list">
-          {bags.map((bag) => {
-            return (
-              <li key={bag.id} className="bags-filter-results__item">
-                <label
-                  className="bags-filter-results__label"
-                  htmlFor={`bag-filter-result-${bag.id}`}
-                >
-                  <input
-                    id={`bag-filter-result-${bag.id}`}
-                    type="checkbox"
-                    className="bags-filter-results__checkbox"
-                    checked={this.isFavoriteBag(bag)}
-                    onChange={() => this.updateSelectedBags(bag)}
-                  />
+        {this.hasFavoritesBags() ? 
+          <ol className="bags-filter-results__list">
+            {favoritesBags.map((bag) => {
+              return (
+                <li key={bag.id} className="bags-filter-results__item">
+                  <label
+                    className="bags-filter-results__label"
+                    htmlFor={`bag-filter-result-${bag.id}`}
+                  >
+                    <input
+                      id={`bag-filter-result-${bag.id}`}
+                      type="checkbox"
+                      className="bags-filter-results__checkbox"
+                      checked={this.isFavoriteBag(bag)}
+                      onChange={() => this.updateSelectedBags(bag)}
+                    />
 
-                  <img
-                    className="bags-filter-results__university-logo"
-                    src={bag.university.logo_url}
-                    alt={`Logo ${bag.university.name}`}
-                  />
+                    <img
+                      className="bags-filter-results__university-logo"
+                      src={bag.university.logo_url}
+                      alt={`Logo ${bag.university.name}`}
+                    />
 
-                  <div className="bags-filter-results__content">
-                    <div className="bags-filter-results__header">
-                      <h2 className="bags-filter-results__university-course">
-                        {bag.course.name}
-                      </h2>
-                      <p className="bags-filter-results__university-course-level">
-                        {bag.course.level}
-                      </p>
+                    <div className="bags-filter-results__content">
+                      <div className="bags-filter-results__header">
+                        <h2 className="bags-filter-results__university-course">
+                          {bag.course.name}
+                        </h2>
+                        <p className="bags-filter-results__university-course-level">
+                          {bag.course.level}
+                        </p>
+                      </div>
+
+                      <div className="bags-filter-results__university-price">
+                        <p className="bags-filter-results__university-discount-percentage">
+                          Bolsa de{" "}
+                          <span className="bags-filter-results__university-discount-percentage-value">
+                            {bag.discount_percentage}%
+                          </span>
+                        </p>
+                        <p className="bags-filter-results__university-price-with-discount">
+                          {formatMoney(bag.price_with_discount)}/mês
+                        </p>
+                      </div>
                     </div>
-
-                    <div className="bags-filter-results__university-price">
-                      <p className="bags-filter-results__university-discount-percentage">
-                        Bolsa de{" "}
-                        <span className="bags-filter-results__university-discount-percentage-value">
-                          {bag.discount_percentage}%
-                        </span>
-                      </p>
-                      <p className="bags-filter-results__university-price-with-discount">
-                        {formatMoney(bag.price_with_discount)}/mês
-                      </p>
-                    </div>
-                  </div>
-                </label>
-              </li>
-            );
-          })}
-        </ol>
+                  </label>
+                </li>
+              );
+            })}
+          </ol>
+        :
+          <div role="alert" className="blankslate">
+            <i className="blankslate__icon far fa-align-slash"></i> 
+            <p className="blankslate__text">Nenhuma bolsa encontrada com essas características.</p>
+          </div>
+        }
 
         <footer className="bags-filter-results__footer">
           <button onClick={closeDialog} className="btn btn_secondary btn_large">
@@ -100,7 +115,7 @@ class ListFilterResults extends React.Component {
           </button>
           <button
             className="btn btn_primary btn_large"
-            disabled={!this.hasSelectedFavoritesBags()}
+            disabled={this.disableAddButton()}
             onClick={() => {
               getFavoritesBags(selectedFavoritesBags);
               closeDialog();
