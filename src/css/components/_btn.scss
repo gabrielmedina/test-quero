@@ -8,7 +8,7 @@
   border: solid 1px var(--color-brand-secondary-dark);
 
   color: var(--color-text);
-  font-size: 1em;
+  font-size: 1rem;
   font-weight: var(--font-weight-bold);
 
   cursor: pointer;
@@ -58,6 +58,7 @@
 
 @media screen and (min-width: $breakpoint-md) {
   .btn_small {
+    font-size: .95rem;
     padding: var(--spacing-xs) var(--spacing-md);
   }
 }

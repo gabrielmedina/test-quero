@@ -81,10 +81,10 @@
 
 .bags-filter-results__footer {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
 
   .btn + .btn {
-    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
   }
 }
 

@@ -10,6 +10,10 @@
   justify-content: center;
   align-items: flex-start;
   background: var(--color-background-overlay);
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .dialog_opened {

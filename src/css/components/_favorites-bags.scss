@@ -135,10 +135,33 @@
   text-align: center;
 }
 
+.favorites-bags__university-disabled-label {
+  margin: 0 0 var(--spacing-md);
+  color: var(--color-text);
+  font-size: .85em;
+  font-weight: var(--font-weight-bold);
+  text-align: center;
+}
+
+.favorites-bags__university-disabled-text {
+  margin: 0;
+  color: var(--color-text);
+  font-size: .85em;
+  text-align: center;
+}
+
 .favorites-bags__footer {
   margin-top: var(--spacing-lg);
   display: flex;
   justify-content: space-between;
+
+  .btn {
+    flex-grow: 1;
+
+    + .btn {
+      margin-left: var(--spacing-md);
+    }
+  }
 }
 
 @media screen and (min-width: $breakpoint-md) {
