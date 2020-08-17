@@ -25,6 +25,7 @@
 
   --color-brand-primary: #18ACC4;
   --color-brand-primary-dark: #007A8D;
+
   --color-brand-secondary: #FDCB13;
   --color-brand-secondary-dark: #DE9E1F;
 
@@ -33,10 +34,6 @@
 
   --color-background: var(--color-light-accessible);
   --color-background-overlay: #1F2D30FA;
-
-  --color-border-light: var(--color-neutral-10);
-  --color-border-light-accessible: var(--color-neutral-20);
-  --color-border-dark: var(--color-neutral-90);
 
   --box-shadow: 0 3px 4px #1F2D303D;
 
@@ -56,12 +53,6 @@
   --container-width-md: 45rem; // 720px
   --container-width-lg: 60rem; // 960px
   --container-width-xl: 75rem; // 1200px
-  
-  --card-background: var(--color-light);
-  
-  --button-text-disabled: var(--color-neutral-60);
-  --button-border-disabled: var(--color-neutral-30);
-  --button-background-disabled: var(--color-neutral-20);
 }
 
 $breakpoint-sm: 576px;
