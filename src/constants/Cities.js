@@ -1,4 +1,5 @@
 const INITIAL_CITIES = [
+  "",
   "São José dos Campos",
   "São Paulo",
   "Fortaleza",
