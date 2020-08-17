@@ -1,6 +1,3 @@
-.form {
-}
-
 .form__field {
   + .form__field {
     margin-top: var(--spacing-lg);
@@ -67,9 +64,9 @@
   display: block;
   height: 1.2rem;
   width: 1.2rem;
-  color: #0363E7;
+  color: var(--color-brand-primary);
   border: 2px solid #BDBDBD;
-  border-radius: 5px;
+  border-radius: 4px;
   background-color: #FAFAFA;
   background-origin: border-box;
   user-select: none;
@@ -78,6 +75,8 @@
   margin: 0 var(--spacing-sm) 0 0;
   padding: 0;
   cursor: pointer;
+  will-change: background;
+  transition: background .2s ease;
 
   &:checked {
     background-color: currentColor;
@@ -97,4 +96,78 @@
 .form__range-value {
   margin-bottom: var(--spacing-sm);
   display: block;
+}
+
+.form__range-input {
+  -webkit-appearance: none;
+  margin: 0;
+  width: 100%;
+}
+
+@mixin form__range-slider-track {
+  width: 100%;
+  height: .3rem;
+  cursor: pointer;
+  background: var(--color-brand-primary);
+  border-radius: 25px;
+}
+
+.form__range-input:focus {
+  outline: none;
+}
+
+.form__range-input::-webkit-slider-runnable-track {
+  @include form__range-slider-track;
+}
+
+.form__range-input:focus::-webkit-slider-runnable-track {
+  background: var(--color-brand-primary-dark);
+}
+
+.form__range-input::-moz-range-track {
+  @include form__range-slider-track;
+}
+
+.form__range-input::-ms-track {
+  @include form__range-slider-track;
+}
+
+@mixin form__range-slider-thumb {
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 1.5rem;
+  border: solid 2px var(--color-brand-primary);
+  background: var(--color-light);
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -.6rem;
+}
+
+.form__range-input::-webkit-slider-thumb {
+  @include form__range-slider-thumb;
+}
+
+.form__range-input::-moz-range-thumb {
+  @include form__range-slider-thumb;
+}
+
+.form__range-input::-ms-thumb {
+  @include form__range-slider-thumb;
+}
+
+.form__range-input::-ms-fill-lower {
+  background: var(--color-brand-primary);
+  border-radius: 50px;
+}
+
+.form__range-input::-ms-fill-upper {
+  background: var(--color-brand-primary);
+  border-radius: 50px;
+}
+
+.form__range-input:focus::-ms-fill-lower {
+  background: var(--color-brand-primary-dark);
+}
+.form__range-input:focus::-ms-fill-upper {
+  background: var(--color-brand-primary-dark);
 }
