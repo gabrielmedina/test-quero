@@ -198,11 +198,10 @@ class FavoritesBags extends React.Component {
                       >
                         Excluir
                       </button>
-                      {bag.enabled ? (
-                        <button className="btn btn_small btn_primary">Ver oferta</button>
-                      ) : (
+                      {bag.enabled ? 
+                        <button className="btn btn_small btn_primary">Ver oferta</button>:
                         <button disabled className="btn btn_small btn_primary">Indisponível</button>
-                      )}
+                      }
                     </footer>
                   </section>
                 </li>
