@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
-import { findIndex, orderBy, filter } from "lodash";
 
+import { findIndex, orderBy, filter } from "lodash";
 import { formatMoney } from "../../helpers/FormatNumber";
 
 import Breadcrumb from "../../components/Breadcrumb";
@@ -22,19 +22,23 @@ class FavoritesBags extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:3001/bags").then((res) => {
-      let bags = res.data;
-      bags = orderBy(bags, ["university.name", "course.name"], ["asc", "asc"]);
-
-      this.setState({
-        storeBags: bags,
-        filteredBags: bags,
-      });
+    axios.get("http://localhost:3001/bags").then((response) => {
+      let storeBags = response.data;
+      storeBags = orderBy(storeBags, ["university.name", "course.name"], ["asc", "asc"]);
+      
+      this.setState({ storeBags });
     });
   }
 
   openAddFavoriteBagDialog = () => {
+    let { filteredBags, favoritesBags, storeBags } = this.state;
+
+    filteredBags = filter(storeBags, (bag) => {
+      return !favoritesBags.includes(bag)
+    });
+
     this.setState({
+      filteredBags,
       displayAddFavoriteBagDialog: true,
     });
   };
@@ -48,13 +52,17 @@ class FavoritesBags extends React.Component {
   removeFavoriteBag = (bag) => {
     let favoritesBags = this.state.favoritesBags;
 
-    const indexBag = findIndex(favoritesBags, bag);
-    favoritesBags.splice(indexBag, 1);
+    const bagTarget = findIndex(favoritesBags, bag);
+    favoritesBags.splice(bagTarget, 1);
 
-    this.updateFavoritesBags(favoritesBags);
+    this.setState({ favoritesBags });
   };
 
-  updateFavoritesBags = (favoritesBags) => {
+  updateFavoritesBags = (selectedFavoritesBags) => {
+    let { favoritesBags } = this.state;
+
+    favoritesBags = [ ...favoritesBags, ...selectedFavoritesBags ];
+
     this.setState({ favoritesBags });
   };
 
@@ -62,26 +70,22 @@ class FavoritesBags extends React.Component {
     let storeBags = this.state.storeBags;
     let filteredBags;
 
-    // filter bags by price
     filteredBags = filter(storeBags, (bag) => {
-      return bag.price_with_discount < price
+      return bag.price_with_discount <= price
     });
-
-    // filter bags course name
+    
     if(filters.course.name) {
       filteredBags = filter(filteredBags, (bag) => {
         return bag.course.name === filters.course.name
       });
     }
 
-    // filter bags course kind
     if(filters.course.kind.length < 2) {
       filteredBags = filter(filteredBags, (bag) => {
         return bag.course.kind === filters.course.kind[0]
       });
     }
 
-    // filter bags campus city
     if(filters.campus.city) {
       filteredBags = filter(filteredBags, (bag) => {
         return bag.campus.city === filters.campus.city
@@ -161,29 +165,44 @@ class FavoritesBags extends React.Component {
 
                     <hr className="favorites-bags__divisor" />
 
-                    <div className="favorites-bags__university-price">
-                      <p className="favorites-bags__university-price-label">
-                        Mensalidade com a Quero Bolsa:
-                      </p>
-                      <p className="favorites-bags__university-full-price">
-                        {formatMoney(bag.full_price)}
-                      </p>
-                      <p className="favorites-bags__university-price-with-discount">
-                        <span>{formatMoney(bag.price_with_discount)}</span>
-                        <span className="favorites-bags__university-price_time">
-                          /mês
-                        </span>
-                      </p>
-                    </div>
+                    {bag.enabled ?
+                      <div className="favorites-bags__university-price">
+                        <p className="favorites-bags__university-price-label">
+                          Mensalidade com a Quero Bolsa:
+                        </p>
+                        <p className="favorites-bags__university-full-price">
+                          {formatMoney(bag.full_price)}
+                        </p>
+                        <p className="favorites-bags__university-price-with-discount">
+                          <span>{formatMoney(bag.price_with_discount)}</span>
+                          <span className="favorites-bags__university-price_time">
+                            /mês
+                          </span>
+                        </p>
+                      </div>
+                    :
+                      <div className="favorites-bags__university-disabled">
+                        <p className="favorites-bags__university-disabled-label">
+                          Bolsa indisponível
+                        </p>
+                        <p className="favorites-bags__university-disabled-text">
+                          Entre em contato com nosso atendimento para saber mais.
+                        </p>
+                      </div>
+                    }
 
                     <footer className="favorites-bags__footer">
                       <button
-                        className="btn btn_secondary"
+                        className="btn btn_small btn_secondary"
                         onClick={() => this.removeFavoriteBag(bag)}
                       >
                         Excluir
                       </button>
-                      <button className="btn btn_primary">Ver oferta</button>
+                      {bag.enabled ? (
+                        <button className="btn btn_small btn_primary">Ver oferta</button>
+                      ) : (
+                        <button disabled className="btn btn_small btn_primary">Indisponível</button>
+                      )}
                     </footer>
                   </section>
                 </li>
@@ -202,7 +221,7 @@ class FavoritesBags extends React.Component {
 
             <ListFilterResults
               favoritesBags={filteredBags}
-              getFavoritesBags={this.updateFavoritesBags}
+              filteredFavoritesBags={this.updateFavoritesBags}
               closeDialog={this.closeAddFavoriteBagDialog}
             />
           </Dialog>

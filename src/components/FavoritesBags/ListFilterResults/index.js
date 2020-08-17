@@ -12,22 +12,33 @@ class ListFilterResults extends React.Component {
     };
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.favoritesBags !== this.props.favoritesBags) {
+      this.setState({
+        selectedFavoritesBags: []
+      });
+    }
+  }
+
   updateSelectedBags = (bag) => {
     let selectedFavoritesBags = this.state.selectedFavoritesBags;
 
-    const index = findIndex(selectedFavoritesBags, bag);
-    index === -1
-      ? selectedFavoritesBags.push(bag)
-      : selectedFavoritesBags.splice(index, 1);
+    const bagTarget = findIndex(selectedFavoritesBags, bag);
+
+    if(bagTarget === -1) {
+      selectedFavoritesBags.push(bag);
+    } else {
+      selectedFavoritesBags.splice(bagTarget, 1);
+    }
 
     this.setState({ selectedFavoritesBags });
   };
 
   isFavoriteBag = (bag) => {
     const selectedFavoritesBags = this.state.selectedFavoritesBags;
-    const index = findIndex(selectedFavoritesBags, bag);
+    const bagTarget = findIndex(selectedFavoritesBags, bag);
 
-    return index !== -1;
+    return bagTarget !== -1;
   };
 
   hasSelectedFavoritesBags = () => {
@@ -44,7 +55,7 @@ class ListFilterResults extends React.Component {
 
   render() {
     const { selectedFavoritesBags } = this.state;
-    const { favoritesBags, getFavoritesBags, closeDialog } = this.props;
+    const { favoritesBags, filteredFavoritesBags, closeDialog } = this.props;
 
     return (
       <section className="bags-filter-results">
@@ -117,7 +128,7 @@ class ListFilterResults extends React.Component {
             className="btn btn_primary btn_large"
             disabled={this.disableAddButton()}
             onClick={() => {
-              getFavoritesBags(selectedFavoritesBags);
+              filteredFavoritesBags(selectedFavoritesBags);
               closeDialog();
             }}
           >

@@ -7,7 +7,11 @@ import INICITAL_CITIES from "../../../constants/Cities";
 import INICITAL_COURSES from "../../../constants/Courses";
 
 const INITIAL_VALUES = {
+  campus: {
+    name: ""
+  },
   course: {
+    name: "",
     kind: ["Presencial", "EaD"],
   },
 };
@@ -25,7 +29,6 @@ class ListFilterForm extends React.Component {
 
   handleSubmit = (values) => {
     const { price } = this.state;
-
     this.props.updateFilters(values, price);
   };
 
