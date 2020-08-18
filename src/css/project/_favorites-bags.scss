@@ -34,12 +34,21 @@
   text-align: center;
 
   cursor: pointer;
+  
+  &:hover,
+  &:focus {
+    .favorites-bags__btn-icon {
+      transform: translateY(-1rem);
+    }
+  }
 }
 
 .favorites-bags__btn-icon {
   margin-bottom: var(--spacing-lg);
   color: var(--color-brand-primary);
   font-size: 4.5em;
+  will-change: transform;
+  transition: transform .3s ease;
 }
 
 .favorites-bags__btn-title {

@@ -12,12 +12,24 @@
   font-weight: var(--font-weight-bold);
 
   cursor: pointer;
+  will-change: transform;
+  transition: transform .2s ease;
+
+  &:hover,
+  &:focus {
+    transform: translateY(-2px) translateZ(0);
+  }
 
   &:disabled {
     color: var(--color-neutral-60);
     border-color: var(--color-neutral-30);
     background: var(--color-neutral-20);
     cursor: default;
+
+    &:hover,
+    &:focus {
+      transform: none;
+    }
   }
 }
 
