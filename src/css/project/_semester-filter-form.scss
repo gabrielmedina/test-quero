@@ -1,0 +1,89 @@
+.semester-filter-form {
+  margin-bottom: var(--spacing-xl);
+}
+
+.semester-filter-form__fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.semester-filter-form__legend {
+  border: 0;
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+
+.semester-filter-form__checkbox {
+  display: flex;
+  flex-direction: column;
+}
+
+.semester-filter-form__checkbox-label {
+  margin-bottom: -1px;
+  display: block;
+  width: 100%;
+  padding: var(--spacing-md);
+  border: solid 1px var(--color-brand-primary-dark);
+  color: var(--color-brand-primary-dark);
+  font-size: 1em;
+  font-weight: var(--font-weight-bold);
+  text-align: center;
+  
+  cursor: pointer;
+  
+  will-change: background;
+  transition: background .2s ease;
+
+  &:first-of-type {
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+  }
+
+  &:last-of-type {
+    margin-bottom: 0;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+  }
+}
+
+.semester-filter-form__checkbox-input {
+  display: none;
+
+  &:checked + .semester-filter-form__checkbox-label {
+    color: var(--color-light);
+    background: var(--color-brand-primary-dark);
+  }
+}
+
+.semester-filter-form__btn {
+  display: none;
+}
+
+@media screen and (min-width: $breakpoint-md) {
+  .semester-filter-form__checkbox {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .semester-filter-form__checkbox-label {
+    margin: 0 -1px 0 0;
+    width: auto;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    
+    &:first-of-type {
+      border-radius: var(--border-radius) 0 0 var(--border-radius);
+    }
+  
+    &:last-of-type {
+      margin-right: 0;
+      border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    }
+  }
+}

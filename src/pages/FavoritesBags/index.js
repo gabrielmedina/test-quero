@@ -1,13 +1,14 @@
 import React from "react";
 import axios from "axios";
 
-import { findIndex, orderBy, filter } from "lodash";
+import { findIndex, orderBy, filter, union } from "lodash";
 import { formatMoney } from "../../helpers/FormatNumber";
 
 import Breadcrumb from "../../components/Breadcrumb";
 import Dialog from "../../components/Dialog";
 import ListFilterForm from "../../components/FavoritesBags/ListFilterForm";
 import ListFilterResults from "../../components/FavoritesBags/ListFilterResults";
+import SemesterFilter from "../../components/FavoritesBags/SemesterFilter";
 
 class FavoritesBags extends React.Component {
   constructor(props) {
@@ -18,6 +19,8 @@ class FavoritesBags extends React.Component {
       storeBags: [],
       filteredBags: [],
       favoritesBags: [],
+      favoritesBagsBySemester: [],
+      semesterFilter: '',
     };
   }
 
@@ -59,15 +62,26 @@ class FavoritesBags extends React.Component {
   };
 
   updateFavoritesBags = (selectedFavoritesBags) => {
-    let { favoritesBags } = this.state;
+    let { favoritesBags, favoritesBagsBySemester, semesterFilter } = this.state;
 
-    favoritesBags = [ ...favoritesBags, ...selectedFavoritesBags ];
+    favoritesBags = union(favoritesBags, selectedFavoritesBags);
+    favoritesBagsBySemester = this.updateFavoritesBagsBySemester(favoritesBags, semesterFilter);
 
-    this.setState({ favoritesBags });
+    this.setState({ favoritesBags, favoritesBagsBySemester });
+  };
+
+  updateFavoritesBagsBySemester = (favoriteBags, semesterFilter) => {
+    if(semesterFilter === "") return favoriteBags;
+
+    favoriteBags = filter(favoriteBags, (bag) => {
+      return bag.enrollment_semester === semesterFilter
+    });
+
+    return favoriteBags;
   };
 
   updateFilteredBags = (filters, price) => {
-    let storeBags = this.state.storeBags;
+    let { storeBags } = this.state;
     let filteredBags;
 
     filteredBags = filter(storeBags, (bag) => {
@@ -95,10 +109,19 @@ class FavoritesBags extends React.Component {
     this.setState({ filteredBags });
   };
 
+  updateSemesterFilter = (filters) => {
+    const { favoritesBags } = this.state;
+    const semesterFilter = filters.enrollment_semester
+
+    let favoritesBagsBySemester = this.updateFavoritesBagsBySemester(favoritesBags, semesterFilter);
+
+    this.setState({ semesterFilter, favoritesBagsBySemester });
+  };
+
   render() {
     const {
       filteredBags,
-      favoritesBags,
+      favoritesBagsBySemester,
       displayAddFavoriteBagDialog,
     } = this.state;
 
@@ -115,7 +138,8 @@ class FavoritesBags extends React.Component {
             </p>
           </header>
 
-          <div className="favorites-bags-filter"></div>
+          <SemesterFilter 
+            updateSemesterFilter={this.updateSemesterFilter} />
 
           <ol className="favorites-bags list">
             <li className="favorites-bags__card card">
@@ -130,7 +154,7 @@ class FavoritesBags extends React.Component {
                 </p>
               </button>
             </li>
-            {favoritesBags.map((bag) => {
+            {favoritesBagsBySemester.map((bag) => {
               return (
                 <li key={bag.id} className="favorites-bags__card card">
                   <section className="favorites-bags__item">

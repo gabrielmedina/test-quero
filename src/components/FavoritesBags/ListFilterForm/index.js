@@ -27,7 +27,7 @@ class ListFilterForm extends React.Component {
     };
   }
 
-  handleSubmit = (values) => {
+  handleSubmitListFilterForm = (values) => {
     const { price } = this.state;
     this.props.updateFilters(values, price);
   };
@@ -42,7 +42,7 @@ class ListFilterForm extends React.Component {
     return (
       <Formik
         initialValues={INITIAL_VALUES}
-        onSubmit={(values) => this.handleSubmit(values)}
+        onSubmit={(values) => this.handleSubmitListFilterForm(values)}
       >
         <Form onChange={() => this.refFormBtn.current.click()} className="bags-filter-form form">
           <div className="form__field">
