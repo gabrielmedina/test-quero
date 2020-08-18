@@ -22,7 +22,7 @@ class FavoritesBags extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("https://jsonkeeper.com/b/VFDC").then((response) => {
+    axios.get("http://localhost:3001/bags").then((response) => {
       let storeBags = response.data;
       storeBags = orderBy(storeBags, ["university.name", "course.name"], ["asc", "asc"]);
       
@@ -114,6 +114,8 @@ class FavoritesBags extends React.Component {
               atualizações com as melhores ofertas disponíveis.
             </p>
           </header>
+
+          <div className="favorites-bags-filter"></div>
 
           <ol className="favorites-bags list">
             <li className="favorites-bags__card card">
@@ -219,7 +221,7 @@ class FavoritesBags extends React.Component {
               updateFilters={this.updateFilteredBags} />
 
             <ListFilterResults
-              favoritesBags={filteredBags}
+              bags={filteredBags}
               filteredFavoritesBags={this.updateFavoritesBags}
               closeDialog={this.closeAddFavoriteBagDialog}
             />

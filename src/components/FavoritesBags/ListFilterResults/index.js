@@ -46,7 +46,7 @@ class ListFilterResults extends React.Component {
   };
 
   hasFavoritesBags = () => {
-    return this.props.favoritesBags.length > 0;
+    return this.props.bags.length > 0;
   }
 
   disableAddButton = () => {
@@ -55,7 +55,7 @@ class ListFilterResults extends React.Component {
 
   render() {
     const { selectedFavoritesBags } = this.state;
-    const { favoritesBags, filteredFavoritesBags, closeDialog } = this.props;
+    const { bags, filteredFavoritesBags, closeDialog } = this.props;
 
     return (
       <section className="bags-filter-results">
@@ -65,7 +65,7 @@ class ListFilterResults extends React.Component {
 
         {this.hasFavoritesBags() ? 
           <ol className="bags-filter-results__list">
-            {favoritesBags.map((bag) => {
+            {bags.map((bag) => {
               return (
                 <li key={bag.id} className="bags-filter-results__item">
                   <label
