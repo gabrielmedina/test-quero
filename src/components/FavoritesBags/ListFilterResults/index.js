@@ -115,7 +115,7 @@ class ListFilterResults extends React.Component {
           </ol>
         :
           <div role="alert" className="blankslate">
-            <i className="blankslate__icon far fa-align-slash"></i> 
+            <i className="blankslate__icon fas fa-align-slash"></i> 
             <p className="blankslate__text">Nenhuma bolsa encontrada com essas características.</p>
           </div>
         }

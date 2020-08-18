@@ -7,7 +7,7 @@ const Header = () => {
         <div className="header__content">
           <div className="header__item">
             <a className="header__link header__link_help" href="/">
-              <i className="header__link-icon fal fa-info-circle"></i>
+              <i className="header__link-icon fas fa-info-circle"></i>
               <span className="header__link-title u-show_lg u-show_xl">
                 Como funciona
               </span>
@@ -44,7 +44,7 @@ const Header = () => {
 
           <div className="header__item">
             <a className="header__link header__link_account" href="/">
-              <i className="header__link-icon fal fa-user-circle"></i>
+              <i className="header__link-icon fas fa-user-circle"></i>
               <span className="header__link-title u-show_lg u-show_xl">
                 Gabriel Medina
               </span>

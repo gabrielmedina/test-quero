@@ -24,7 +24,7 @@ const Footer = () => {
             </li>
             <li className="footer__contact-item">
               <a className="footer__contact-link" href="/">
-                <i className="footer__contact-link-icon fal fa-comments"></i>
+                <i className="footer__contact-link-icon fas fa-comments"></i>
                 <div className="footer__contact-link-content">
                   <span className="footer__contact-link-title">Chat ao vivo</span>
                   <span className="footer__contact-link-subtitle">
@@ -35,7 +35,7 @@ const Footer = () => {
             </li>
             <li className="footer__contact-item">
               <a className="footer__contact-link" href="/">
-                <i className="footer__contact-link-icon fal fa-envelope"></i>
+                <i className="footer__contact-link-icon fas fa-envelope"></i>
                 <div className="footer__contact-link-content">
                   <span className="footer__contact-link-title">Mange um e-mail</span>
                   <span className="footer__contact-link-subtitle">
@@ -46,7 +46,7 @@ const Footer = () => {
             </li>
             <li className="footer__contact-item">
               <a className="footer__contact-link" href="/">
-                <i className="footer__contact-link-icon fal fa-info-circle"></i>
+                <i className="footer__contact-link-icon fas fa-info-circle"></i>
                 <div className="footer__contact-link-content">
                   <span className="footer__contact-link-title">Central de ajuda</span>
                   <span className="footer__contact-link-subtitle">
@@ -62,7 +62,7 @@ const Footer = () => {
       <div className="footer__copyright">
         <div className="container">
           <small className="footer__copyright-text">
-            Feito com <i className="footer__copyright-icon far fa-heart"></i> pela Quero Educação
+            Feito com <i className="footer__copyright-icon fas fa-heart"></i> pela Quero Educação
           </small>
         </div>
       </div>

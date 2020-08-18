@@ -121,7 +121,7 @@ class FavoritesBags extends React.Component {
                 className="favorites-bags__btn"
                 onClick={this.openAddFavoriteBagDialog}
               >
-                <i className="favorites-bags__btn-icon fal fa-plus-circle"></i>
+                <i className="favorites-bags__btn-icon fas fa-plus-circle"></i>
                 <h2 className="favorites-bags__btn-title">Adicionar bolsa</h2>
                 <p className="favorites-bags__btn-text">
                   Clique para adicionar bolsas de cursos do seu interesse

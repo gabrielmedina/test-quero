@@ -32,7 +32,7 @@ class Dialog extends React.Component {
             aria-label="Fechar diálogo"
             className="dialog__close"
           >
-            <i className="fal fa-times"></i>
+            <i className="fas fa-times"></i>
           </button>
 
           <div className="dialog__content">
