@@ -1,6 +1,5 @@
 @import './base/reset';
 @import './base/tokens';
-@import './base/utilitaries';
 
 @import './components/blankslate';
 @import './components/breadcrumb';
@@ -14,6 +13,7 @@
 @import './components/list';
 @import './components/navbar';
 @import './components/page';
+@import './components/utilitaries';
 
 @import './project/bags-filter-form';
 @import './project/bags-filter-results';
