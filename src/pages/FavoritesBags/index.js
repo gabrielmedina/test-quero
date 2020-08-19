@@ -25,7 +25,7 @@ class FavoritesBags extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("https://jsonkeeper.com/b/VFDC").then((response) => {
+    axios.get("https://api.jsonbin.io/b/5f3c75b6b88c04101cf6d5e7").then((response) => {
       let storeBags = response.data;
       storeBags = orderBy(storeBags, ["university.name", "course.name"], ["asc", "asc"]);
       
