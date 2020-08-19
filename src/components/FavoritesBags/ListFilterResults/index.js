@@ -13,7 +13,7 @@ class ListFilterResults extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.favoritesBags !== this.props.favoritesBags) {
+    if (prevProps.bags !== this.props.bags) {
       this.setState({
         selectedFavoritesBags: []
       });
