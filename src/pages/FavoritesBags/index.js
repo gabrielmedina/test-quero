@@ -53,18 +53,22 @@ class FavoritesBags extends React.Component {
   };
 
   removeFavoriteBag = (bag) => {
-    let favoritesBags = this.state.favoritesBags;
+    let { favoritesBags, favoritesBagsBySemester, semesterFilter } = this.state;
 
     const bagTarget = findIndex(favoritesBags, bag);
     favoritesBags.splice(bagTarget, 1);
 
-    this.setState({ favoritesBags });
+    favoritesBagsBySemester = this.updateFavoritesBagsBySemester(favoritesBags, semesterFilter);
+
+    this.setState({ favoritesBags, favoritesBagsBySemester });
   };
 
   updateFavoritesBags = (selectedFavoritesBags) => {
     let { favoritesBags, favoritesBagsBySemester, semesterFilter } = this.state;
 
     favoritesBags = union(favoritesBags, selectedFavoritesBags);
+    favoritesBags = orderBy(favoritesBags, ["university.name", "course.name"], ["asc", "asc"]);
+
     favoritesBagsBySemester = this.updateFavoritesBagsBySemester(favoritesBags, semesterFilter);
 
     this.setState({ favoritesBags, favoritesBagsBySemester });
