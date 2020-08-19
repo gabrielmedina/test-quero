@@ -181,8 +181,12 @@
   }
 
   .favorites-bags__card {
-    width: calc(50% - var(--spacing-lg));
+    width: calc(50% - var(--spacing-lg) / 2);
     margin: 0 var(--spacing-lg) var(--spacing-lg) 0;
+
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
 
     + .favorites-bags__card {
       margin-top: 0;
@@ -196,13 +200,28 @@
 
 @media screen and (min-width: $breakpoint-lg) {
   .favorites-bags__card {
-    width: calc(33.33% - var(--spacing-lg));
+    width: calc(33.33% - (var(--spacing-lg) * 2) / 3);
+    
+    &:nth-child(2n) {
+      margin-right: var(--spacing-lg);
+    }
+
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
   }
 }
 
-
 @media screen and (min-width: $breakpoint-xl) {
   .favorites-bags__card {
-    width: calc(25% - var(--spacing-lg));
+    width: calc(25% - (var(--spacing-lg) * 3) / 4);
+
+    &:nth-child(3n) {
+      margin-right: var(--spacing-lg);
+    }
+
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
   }
 }

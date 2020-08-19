@@ -30,7 +30,7 @@ class SemesterFilter extends React.Component {
 
             <div className="semester-filter-form__checkbox">
               {INITIAL_SEMESTERS.map((semester) => (
-                <>
+                <div key={semester.id} className="semester-filter-form__checkbox-item">
                   <Field
                     type="radio"
                     name="enrollment_semester"
@@ -44,7 +44,7 @@ class SemesterFilter extends React.Component {
                   >
                     {semester.title}
                   </label>
-                </>
+                </div>
               ))}
             </div>
           </fieldset>

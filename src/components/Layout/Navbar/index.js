@@ -35,7 +35,7 @@ class Navbar extends React.Component {
             >
               Menu
               <i
-                className={`navbar__link-icon far ${
+                className={`navbar__link-icon fas ${
                   displayNavbarList ? "fa-angle-up" : "fa-angle-down"
                 }`}
               ></i>
