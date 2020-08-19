@@ -1,6 +1,6 @@
 # Teste front-end para Quero Educação
 
-[Link do teste](https://github.com/quero-edu/front-end-test-quero)
+[Link do projeto na Netlify](https://test-quero-medina.netlify.app/)
 
 ## 1. Como executar o projeto
 
