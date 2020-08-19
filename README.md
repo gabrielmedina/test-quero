@@ -23,7 +23,7 @@ Como foi utilizado a [json-server](https://github.com/typicode/json-server) para
 
 ## O que foi utilizado
 
-### Framework/Bibliotéca
+### Framework/Biblioteca
 
 - Utilizei o framework [React](https://pt-br.reactjs.org/) juntamente com o CLI [create-react-app](https://create-react-app.dev/) para criar a base do projeto.
 
@@ -43,3 +43,5 @@ Como foi utilizado a [json-server](https://github.com/typicode/json-server) para
 
 - Adicionar server-side rendering (podemos utilizar o Next.js);
 - Adicionar redux para centralizar o estado da aplicação;
+- Refatorar os componentes inchados buscando isolar componentes menores;
+- Popular o formulário de filtros com dados reais vindo do back-end;
